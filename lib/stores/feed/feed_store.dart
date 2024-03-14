@@ -15,17 +15,10 @@ abstract class _FeedStoreBase with Store {
   @observable
   Map<int, Story> storyCache = {};
 
-  @observable
-  String errorMessage = "";
-
   @action
   Future refreshFeed() async {
-    try {
-      storyIds = await _apiService.getFeedStoryIds();
-      storyCache = {};
-    } catch (e) {
-      errorMessage = e.toString();
-    }
+    storyIds = await _apiService.getFeedStoryIds();
+    storyCache = {};
   }
 
   @action

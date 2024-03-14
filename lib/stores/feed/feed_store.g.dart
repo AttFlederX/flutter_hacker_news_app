@@ -41,22 +41,6 @@ mixin _$FeedStore on _FeedStoreBase, Store {
     });
   }
 
-  late final _$errorMessageAtom =
-      Atom(name: '_FeedStoreBase.errorMessage', context: context);
-
-  @override
-  String get errorMessage {
-    _$errorMessageAtom.reportRead();
-    return super.errorMessage;
-  }
-
-  @override
-  set errorMessage(String value) {
-    _$errorMessageAtom.reportWrite(value, super.errorMessage, () {
-      super.errorMessage = value;
-    });
-  }
-
   late final _$refreshFeedAsyncAction =
       AsyncAction('_FeedStoreBase.refreshFeed', context: context);
 
@@ -77,8 +61,7 @@ mixin _$FeedStore on _FeedStoreBase, Store {
   String toString() {
     return '''
 storyIds: ${storyIds},
-storyCache: ${storyCache},
-errorMessage: ${errorMessage}
+storyCache: ${storyCache}
     ''';
   }
 }
